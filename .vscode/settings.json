@@ -1,0 +1,25 @@
+{
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "editor.tabCompletion": "on",
+  "editor.snippetSuggestions": "top",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // "emmet.showAbbreviationSuggestions": true,
+  // "emmet.showExpandedAbbreviation": "always",
+  // "emmet.includeLanguages": {
+  //   "javascript": "javascriptreact",
+  //   "typescript": "typescriptreact"
+  // },
+  // "emmet.triggerExpansionOnTab": true
+}
