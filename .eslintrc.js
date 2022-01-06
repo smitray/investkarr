@@ -1,51 +1,68 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 2021,
-    sourceType: 'module',
-    project: ['./tsconfig.json'],
-  },
+  root: true,
   env: {
     'react-native/react-native': true,
     es2021: true,
   },
-  plugins: ['react', 'react-native', 'react-hooks', 'import', 'unicorn'],
-  extends: [
-    'airbnb-typescript',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/recommended',
-    'plugin:promise/recommended',
-    'plugin:prettier/recommended',
-    'plugin:unicorn/recommended',
-  ],
-  settings: {
-    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
-    'import/resolver': {
-      typescript: {
-        project: ['tsconfig.json'],
+  overrides: [
+    {
+      files: '*.js',
+      extends: ['airbnb', 'prettier'],
+    },
+    {
+      files: ['*.ts', '*.tsx'],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+        ecmaVersion: 2021,
+        sourceType: 'module',
+        project: ['./tsconfig.json'],
       },
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      plugins: ['react', 'import', '@typescript-eslint', 'prettier'],
+      extends: [
+        'airbnb-typescript',
+        'airbnb/hooks',
+        'plugin:react/recommended',
+        'plugin:react-hooks/recommended',
+        '@react-native-community',
+        'plugin:import/typescript',
+        'plugin:promise/recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:prettier/recommended',
+        'plugin:unicorn/recommended',
+      ],
+      settings: {
+        react: {
+          version: 'detect',
+        },
+        'import/parsers': {
+          '@typescript-eslint/parser': ['.ts', '.tsx'],
+        },
+        'import/resolver': {
+          typescript: {
+            alwaysTryTypes: true,
+            project: 'packages/*/tsconfig.json',
+          },
+          node: {
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          },
+        },
+      },
+      rules: {
+        // Include .prettierrc.js rules
+        'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+        // Disable node protocol
+        'unicorn/prefer-node-protocol': 'off',
+        // Disable prefer module
+        'unicorn/prefer-module': 'off',
+        // Disable App.tsx filename error
+        'unicorn/filename-case': [
+          'error',
+          { case: 'kebabCase', ignore: ['App.tsx'] },
+        ],
       },
     },
-  },
-  rules: {
-    // Include .prettierrc.js rules
-    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
-    // Disable node protocol
-    'unicorn/prefer-node-protocol': 'off',
-    // Disable prefer module
-    'unicorn/prefer-module': 'off',
-    // Disable unicorm/filename-case for App.tsx file
-    'unicorn/filename-case': [
-      'error',
-      {
-        case: 'kebabCase',
-        ignore: ['App.tsx'],
-      },
-    ],
-  },
+  ],
 };

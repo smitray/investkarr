@@ -15,11 +15,4 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // "emmet.showAbbreviationSuggestions": true,
-  // "emmet.showExpandedAbbreviation": "always",
-  // "emmet.includeLanguages": {
-  //   "javascript": "javascriptreact",
-  //   "typescript": "typescriptreact"
-  // },
-  // "emmet.triggerExpansionOnTab": true
 }
