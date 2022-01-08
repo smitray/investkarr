@@ -1,22 +1,18 @@
 import React from 'react';
+import { ThemeProvider } from '@shopify/restyle';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: 'white',
-    flex: 1,
-    justifyContent: 'center',
-  },
-});
+import { LoadAssets } from '@components';
+import { theme } from '@theme';
+import { RootNavigation } from './src/modules';
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider {...{ theme }}>
+      <LoadAssets>
+        <RootNavigation />
+        <StatusBar style="auto" />
+      </LoadAssets>
+    </ThemeProvider>
   );
 };
 

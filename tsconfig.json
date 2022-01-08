@@ -23,12 +23,15 @@
     "baseUrl": ".",
     "paths": {
       "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/shared/components/*"],
-      "@store/*": ["./src/shared/store/*"],
-      "@utils/*": ["./src/shared/utils/*"],
-      "@theme/*": ["./src/shared/theme/*"]
+      "@components": ["./src/shared/components"],
+      "@ui": ["./src/shared/ui"],
+      "@store": ["./src/shared/store"],
+      "@utils": ["./src/shared/utils"],
+      "@theme": ["./src/shared/theme"],
+      "@tp/*": ["./src/shared/types/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "App.tsx"],
-  "exclude": ["node_modules", "**/*.d.ts"]
+  "exclude": ["node_modules", "**/*.d.ts"],
+  "extends": "expo/tsconfig.base"
 }

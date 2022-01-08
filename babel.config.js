@@ -16,9 +16,11 @@ module.exports = function (api) {
           alias: {
             '@assets': './src/assets',
             '@components': './src/shared/components',
+            '@ui': './src/shared/ui',
             '@store': './src/shared/store',
             '@utils': './src/shared/utils',
             '@theme': './src/shared/theme',
+            '@tp': './src/shared/types',
           },
         },
       ],
