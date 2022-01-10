@@ -19,26 +19,18 @@ export const Pallete = {
   input: '#483D5C',
 
   background: '#FCFAFE',
+  dotBackground: 'rgba(0,0,0,0.25)',
+  dotActive: '#5928e5',
+
+  white: '#FFFFFF',
 };
 
 const theme = createTheme({
   colors: {
-    primary: Pallete.primary,
-    lightPrimary: Pallete.lightPrimary,
-    lighterPrimary: Pallete.lighterPrimary,
-    asYellow: Pallete.asYellow,
-    asPink: Pallete.asPink,
-    asCream: Pallete.asCream,
-    asGreen: Pallete.asGreen,
-    asRed: Pallete.asRed,
-    textBlack: Pallete.textBlack,
-    textMedium: Pallete.textMedium,
-    textLight: Pallete.textLight,
-    label: Pallete.label,
-    input: Pallete.input,
-    background: Pallete.background,
+    ...Pallete,
   },
   spacing: {
+    o: 0,
     xs: 4,
     s: 8,
     m: 16,
@@ -46,10 +38,14 @@ const theme = createTheme({
     l: 24,
     ll: 28,
     xl: 30,
+    xxl: 65,
   },
   breakpoints: {
     phone: 0,
     tablet: 768,
+  },
+  borderRadii: {
+    m: 26,
   },
   textVariants: {
     obTitle: {
@@ -57,6 +53,17 @@ const theme = createTheme({
       lineHeight: 32.4,
       fontFamily: 'bold',
       color: 'textBlack',
+    },
+    obDescription: {
+      fontSize: 18,
+      lineHeight: 18.23,
+      fontFamily: 'regular',
+      color: 'textLight',
+    },
+    buttonLabel: {
+      fontSize: 16,
+      lineHeight: 20.83,
+      fontFamily: 'bold',
     },
   },
 });

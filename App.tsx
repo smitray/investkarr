@@ -3,7 +3,7 @@ import { ThemeProvider } from '@shopify/restyle';
 import { StatusBar } from 'expo-status-bar';
 import { LoadAssets } from '@components';
 import { theme } from '@theme';
-import { RootNavigation } from './src/modules';
+import { RootNavigation } from '@modules';
 
 const App = () => {
   return (

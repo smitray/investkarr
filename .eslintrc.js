@@ -62,6 +62,8 @@ module.exports = {
           'error',
           { case: 'kebabCase', ignore: ['App.tsx'] },
         ],
+        // Disable inline style
+        'react-native/no-inline-styles': 'off',
       },
     },
   ],
