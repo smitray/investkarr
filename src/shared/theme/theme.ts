@@ -52,13 +52,11 @@ const theme = createTheme({
       fontSize: 24,
       lineHeight: 32.4,
       fontFamily: 'bold',
-      color: 'textBlack',
     },
     obDescription: {
       fontSize: 18,
       lineHeight: 18.23,
       fontFamily: 'regular',
-      color: 'textLight',
     },
     buttonLabel: {
       fontSize: 16,

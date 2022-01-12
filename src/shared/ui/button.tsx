@@ -1,8 +1,9 @@
 import React from 'react';
-import { RectButton, RectButtonProperties } from 'react-native-gesture-handler';
+import { StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 import { Children } from '@tp/global';
-import { useTheme } from '@theme';
 import Text from './text';
+import { SCREEN_WIDTH } from '@utils';
+import Box from './box';
 
 type ButtonProperties = {
   label: string;
@@ -10,13 +11,26 @@ type ButtonProperties = {
   onPress: () => void;
   children?: Children;
   disabled?: true | false;
-  style?: RectButtonProperties['style'];
+  style?: ViewStyle;
+  widthType?: 'one' | 'two' | number;
 };
 
 /**
- * TODO: Button width type
- * TODO: Button shadow for secondary
+ * TODO: Button with icon
  */
+
+const styles = StyleSheet.create({
+  secondary: {
+    shadowColor: '#121010',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.08,
+    shadowRadius: 16,
+    elevation: 2,
+  },
+});
 
 const Button = ({
   label,
@@ -24,39 +38,50 @@ const Button = ({
   onPress,
   children,
   disabled = false,
+  widthType = 'one',
   style,
 }: ButtonProperties) => {
-  const theme = useTheme();
+  let widthValue: number;
+  if (widthType === 'one') {
+    widthValue = SCREEN_WIDTH - 40;
+  } else if (widthType === 'two') {
+    widthValue = Math.round((SCREEN_WIDTH - 55) / 2);
+  } else {
+    widthValue = widthType;
+  }
+
+  const handlePress = () => {
+    if (disabled) return;
+    onPress();
+  };
+
   return (
-    <RectButton
-      onPress={() => {
-        if (!disabled) onPress();
-      }}
-      style={[
-        {
-          borderRadius: theme.borderRadii.m,
-          width: 160,
-          height: 48,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor:
-            variant === 'primary' ? theme.colors.primary : theme.colors.white,
-          opacity: disabled ? 0.4 : 1,
-        },
-        style,
-      ]}
+    <TouchableOpacity
+      delayPressIn={10}
+      {...{ onPress: handlePress, disabled }}
+      style={[{ width: widthValue, height: 48 }, style]}
     >
-      {children ? (
-        children
-      ) : (
-        <Text
-          variant="buttonLabel"
-          color={variant === 'primary' ? 'white' : 'primary'}
-        >
-          {label}
-        </Text>
-      )}
-    </RectButton>
+      <Box
+        flex={1}
+        borderRadius="m"
+        backgroundColor={variant === 'primary' ? 'primary' : 'white'}
+        justifyContent="center"
+        alignItems="center"
+        opacity={disabled ? 0.4 : 1}
+        style={variant === 'secondary' && styles.secondary}
+      >
+        {children ? (
+          children
+        ) : (
+          <Text
+            variant="buttonLabel"
+            color={variant === 'primary' ? 'white' : 'primary'}
+          >
+            {label}
+          </Text>
+        )}
+      </Box>
+    </TouchableOpacity>
   );
 };
 

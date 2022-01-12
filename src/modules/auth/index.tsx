@@ -1,10 +1,13 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { RootStackParameterList } from '@tp/stack';
-import { OnBoarding } from './onboarding';
+import { OnBoarding, assets as OnBoardingAssets } from './onboarding';
+import { LoginLanding } from './login';
 
-const Stack = createNativeStackNavigator<RootStackParameterList>();
+export const assets = [...OnBoardingAssets];
+
+const Stack = createStackNavigator<RootStackParameterList>();
 
 const Navigation = () => {
   return (
@@ -15,6 +18,9 @@ const Navigation = () => {
           component={OnBoarding}
           options={{ headerShown: false }}
         />
+
+        {/* login flow */}
+        <Stack.Screen name="Landing" component={LoginLanding} />
       </Stack.Navigator>
     </NavigationContainer>
   );

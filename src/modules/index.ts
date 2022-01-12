@@ -1,1 +1,1 @@
-export { default as RootNavigation } from './auth';
+export { default as RootNavigation, assets as AuthAssets } from './auth';

@@ -1,50 +1,63 @@
 import React from 'react';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import { Image, ImageSourcePropType } from 'react-native';
+import { Image } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
 import { Text, Layout, Box, Button } from '@ui';
 import { SCREEN_WIDTH, normalizeSize } from '@utils';
 import { comonStyle } from '@cmSt';
 import { useTheme } from '@theme';
+import { RootStackParameterList } from '@tp/stack';
 
-const OnBoarding = () => {
+/**
+ * TODO: Need to export images for better caching
+ * TODO: Add routes to signup and login
+ */
+
+type SlideType = {
+  key: string;
+  title: string;
+  text: string;
+  image: number;
+  paddingTop: 'o' | 'm';
+};
+
+const slides: SlideType[] = [
+  {
+    key: 'one',
+    title: 'Goal Based investing',
+    text: 'Invest into time tested portfolios',
+    image: require('@assets/images/goal-based.png'),
+    paddingTop: 'o',
+  },
+  {
+    key: 'two',
+    title: 'Zero commission',
+    text: 'Invest into direct plans of mutual funds \n schemes',
+    image: require('@assets/images/zero-commission.png'),
+    paddingTop: 'm',
+  },
+  {
+    key: 'three',
+    title: 'Unbiased advice',
+    text: 'Independent company, not part of any \n large company',
+    image: require('@assets/images/unbiased-advise.png'),
+    paddingTop: 'm',
+  },
+  {
+    key: 'three',
+    title: 'Data Security',
+    text: 'We do not sell any of your data',
+    image: require('@assets/images/data-security.png'),
+    paddingTop: 'o',
+  },
+];
+
+export const assets = slides.map((slide) => slide.image);
+
+const OnBoarding = ({
+  navigation,
+}: StackScreenProps<RootStackParameterList, 'OnBoarding'>) => {
   const theme = useTheme();
-  type SlideType = {
-    key: string;
-    title: string;
-    text: string;
-    image: ImageSourcePropType;
-    paddingTop: 'o' | 'm';
-  };
-  const slides: SlideType[] = [
-    {
-      key: 'one',
-      title: 'Goal Based investing',
-      text: 'Invest into time tested portfolios',
-      image: require('@assets/images/goal-based.png'),
-      paddingTop: 'o',
-    },
-    {
-      key: 'two',
-      title: 'Zero commission',
-      text: 'Invest into direct plans of mutual funds \n schemes',
-      image: require('@assets/images/zero-commission.png'),
-      paddingTop: 'm',
-    },
-    {
-      key: 'three',
-      title: 'Unbiased advice',
-      text: 'Independent company, not part of any \n large company',
-      image: require('@assets/images/unbiased-advise.png'),
-      paddingTop: 'm',
-    },
-    {
-      key: 'three',
-      title: 'Data Security',
-      text: 'We do not sell any of your data',
-      image: require('@assets/images/data-security.png'),
-      paddingTop: 'o',
-    },
-  ];
 
   const RenderItems = (item: SlideType) => (
     <Box flex={1} alignItems="center" justifyContent="center">
@@ -66,10 +79,11 @@ const OnBoarding = () => {
         marginTop="xxl"
         marginBottom="s"
         textAlign="center"
+        color="textBlack"
       >
         {item.title}
       </Text>
-      <Text variant="obDescription" textAlign="center">
+      <Text variant="obDescription" textAlign="center" color="textLight">
         {item.text}
       </Text>
     </Box>
@@ -96,13 +110,20 @@ const OnBoarding = () => {
           }}
         />
       </Box>
-      <Box flex={1} flexDirection="row" justifyContent="center">
+      <Box flex={1} flexDirection="row" justifyContent="space-evenly">
         <Button
           label="Login"
+          onPress={() => navigation.push('Landing')}
+          widthType="two"
+          variant="secondary"
+        />
+        <Button
+          label="Signup"
           onPress={() => {
             console.log('hi');
           }}
-          style={{ width: SCREEN_WIDTH - 40 }}
+          widthType="two"
+          variant="primary"
         />
       </Box>
     </Layout>

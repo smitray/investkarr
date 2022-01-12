@@ -3,12 +3,14 @@ import { ThemeProvider } from '@shopify/restyle';
 import { StatusBar } from 'expo-status-bar';
 import { LoadAssets } from '@components';
 import { theme } from '@theme';
-import { RootNavigation } from '@modules';
+import { RootNavigation, AuthAssets } from '@modules';
+
+const assets = [...AuthAssets];
 
 const App = () => {
   return (
     <ThemeProvider {...{ theme }}>
-      <LoadAssets>
+      <LoadAssets {...{ assets }}>
         <RootNavigation />
         <StatusBar style="auto" />
       </LoadAssets>

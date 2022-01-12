@@ -8,26 +8,15 @@ import {
   DMSans_500Medium,
   DMSans_700Bold,
 } from '@expo-google-fonts/dm-sans';
+import { useAssets } from 'expo-asset';
 import { Children } from '@tp/global';
 
 type Properties = {
   children: Children;
-  assets?: Array<string>;
+  assets: number[];
 };
 
-/**
- * TODO: Assets will add if needed
- */
-
-// const [assets] = useAssets(Icons);
-
-// useEffect(() => {
-//   if (assets && fontsLoaded) SplashScreen.hideAsync();
-// }, [assets, fontsLoaded]);
-
-// if (!assets) return <AppLoading />;
-
-const LoadAssets = ({ children }: Properties) => {
+const LoadAssets = ({ children, assets }: Properties) => {
   SplashScreen.preventAutoHideAsync();
   const [fontsLoaded] = useFonts({
     regular: DMSans_400Regular,
@@ -35,11 +24,13 @@ const LoadAssets = ({ children }: Properties) => {
     bold: DMSans_700Bold,
   });
 
+  const [asset] = useAssets(assets);
+
   useEffect(() => {
-    if (fontsLoaded) {
+    if (asset && fontsLoaded) {
       SplashScreen.hideAsync();
     }
-  }, [fontsLoaded]);
+  }, [asset, fontsLoaded]);
 
   return fontsLoaded ? (
     <SafeAreaProvider>{children}</SafeAreaProvider>
