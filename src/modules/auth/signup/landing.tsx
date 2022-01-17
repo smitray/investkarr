@@ -1,4 +1,4 @@
-import { Box, Layout, AuthBottomAlterLink } from '@ui';
+import { Box, Layout, AuthBottomAlterLink, Text } from '@ui';
 import { Image } from 'react-native';
 import React from 'react';
 import { comonStyle } from '@cmSt';
@@ -8,7 +8,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParameterList } from '@tp/stack';
 
 const images = {
-  logo: require('@assets/images/logo-full.png'),
+  logo: require('@assets/images/logo.png'),
   email: require('@assets/images/envelope-fill.png'),
   google: require('@assets/images/google.png'),
   apple: require('@assets/images/apple.png'),
@@ -16,17 +16,10 @@ const images = {
 
 export const assets = [images.logo, images.apple, images.email, images.google];
 
-const landing = ({
+const SignUpLanding = ({
   navigation,
-}: StackScreenProps<RootStackParameterList, 'LoginLanding'>) => {
+}: StackScreenProps<RootStackParameterList, 'SignupLanding'>) => {
   const data: Array<SocialButtonDataType> = [
-    {
-      key: 'email',
-      variant: 'primary',
-      label: 'Login with Email',
-      onPress: () => console.log('login with email pressed'),
-      image: images.email,
-    },
     {
       key: 'google',
       variant: 'secondary',
@@ -41,19 +34,26 @@ const landing = ({
       onPress: () => console.log('Login with Apple pressed'),
       image: images.apple,
     },
+    {
+      key: 'email',
+      variant: 'primary',
+      label: 'Login with Email',
+      onPress: () => console.log('login with email pressed'),
+      image: images.email,
+    },
   ];
   return (
     <Layout>
       <Box
-        flex={1}
+        flex={3}
         alignItems="center"
         justifyContent="center"
         paddingTop="xxl"
       >
         <Box
-          width={moderateScale(130)}
-          height={moderateScale(130) / 1.8}
-          aspectRatio={1.8}
+          width={moderateScale(90)}
+          height={moderateScale(90) / 1}
+          aspectRatio={1}
         >
           <Image
             resizeMode="contain"
@@ -61,14 +61,17 @@ const landing = ({
             style={comonStyle.resImage}
           />
         </Box>
+        <Text variant="obTitle" textAlign="center" color="textBlack">
+          Smarter way to grow {'\n'} your wealth
+        </Text>
       </Box>
-      <SocialButtons type="login" data={data} />
+      <SocialButtons type="signup" data={data} />
       <AuthBottomAlterLink
-        type="login"
-        onPress={() => navigation.navigate('SignupLanding')}
+        type="signup"
+        onPress={() => navigation.navigate('LoginLanding')}
       />
     </Layout>
   );
 };
 
-export default landing;
+export default SignUpLanding;

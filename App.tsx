@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-native-gesture-handler';
 import { ThemeProvider } from '@shopify/restyle';
 import { StatusBar } from 'expo-status-bar';
 import { LoadAssets } from '@components';

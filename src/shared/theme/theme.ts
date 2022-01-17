@@ -18,9 +18,14 @@ export const Pallete = {
   label: '#5F527A',
   input: '#483D5C',
 
+  appleButton: '#18141f',
+
   background: '#FCFAFE',
+
   dotBackground: 'rgba(0,0,0,0.25)',
   dotActive: '#5928e5',
+  orBorder: '#B8B8B8',
+  orColor: '#565656',
 
   white: '#FFFFFF',
 };
@@ -62,6 +67,25 @@ const theme = createTheme({
       fontSize: 16,
       lineHeight: 20.83,
       fontFamily: 'bold',
+    },
+    orlabel: {
+      fontSize: 12,
+      lineHeight: 15.62,
+      fontFamily: 'regular',
+      color: 'orColor',
+      marginHorizontal: 'ml',
+    },
+    authAlterLinkBase: {
+      fontSize: 13,
+      lineHeight: 15.73,
+      fontFamily: 'regular',
+      color: 'textBlack',
+    },
+    authAlterSpan: {
+      fontSize: 12,
+      lineHeight: 15.62,
+      fontFamily: 'bold',
+      color: 'primary',
     },
   },
 });

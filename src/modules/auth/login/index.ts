@@ -1,1 +1,1 @@
-export { default as LoginLanding } from './landing';
+export { default as LoginLanding, assets } from './landing';

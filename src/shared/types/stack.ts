@@ -1,4 +1,5 @@
 export type RootStackParameterList = {
   OnBoarding: undefined;
-  Landing: undefined;
+  LoginLanding: undefined;
+  SignupLanding: undefined;
 };

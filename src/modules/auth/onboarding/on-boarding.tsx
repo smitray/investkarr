@@ -113,15 +113,13 @@ const OnBoarding = ({
       <Box flex={1} flexDirection="row" justifyContent="space-evenly">
         <Button
           label="Login"
-          onPress={() => navigation.push('Landing')}
+          onPress={() => navigation.push('LoginLanding')}
           widthType="two"
           variant="secondary"
         />
         <Button
           label="Signup"
-          onPress={() => {
-            console.log('hi');
-          }}
+          onPress={() => navigation.push('SignupLanding')}
           widthType="two"
           variant="primary"
         />

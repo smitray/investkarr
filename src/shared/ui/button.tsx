@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
+import {
+  ImageStyle,
+  StyleSheet,
+  TouchableOpacity,
+  ViewStyle,
+  Image,
+} from 'react-native';
 import { Children } from '@tp/global';
 import Text from './text';
 import { SCREEN_WIDTH } from '@utils';
@@ -7,12 +13,14 @@ import Box from './box';
 
 type ButtonProperties = {
   label: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'apple';
   onPress: () => void;
   children?: Children;
   disabled?: true | false;
   style?: ViewStyle;
   widthType?: 'one' | 'two' | number;
+  imageSource?: number;
+  imageStyle?: ImageStyle;
 };
 
 /**
@@ -40,6 +48,8 @@ const Button = ({
   disabled = false,
   widthType = 'one',
   style,
+  imageSource,
+  imageStyle,
 }: ButtonProperties) => {
   let widthValue: number;
   if (widthType === 'one') {
@@ -63,8 +73,15 @@ const Button = ({
     >
       <Box
         flex={1}
+        flexDirection="row"
         borderRadius="m"
-        backgroundColor={variant === 'primary' ? 'primary' : 'white'}
+        backgroundColor={
+          variant === 'primary'
+            ? 'primary'
+            : variant === 'apple'
+            ? 'appleButton'
+            : 'white'
+        }
         justifyContent="center"
         alignItems="center"
         opacity={disabled ? 0.4 : 1}
@@ -73,12 +90,21 @@ const Button = ({
         {children ? (
           children
         ) : (
-          <Text
-            variant="buttonLabel"
-            color={variant === 'primary' ? 'white' : 'primary'}
-          >
-            {label}
-          </Text>
+          <>
+            {imageSource && (
+              <Image
+                source={imageSource}
+                resizeMode="contain"
+                style={imageStyle}
+              />
+            )}
+            <Text
+              variant="buttonLabel"
+              color={variant === 'secondary' ? 'primary' : 'white'}
+            >
+              {label}
+            </Text>
+          </>
         )}
       </Box>
     </TouchableOpacity>
