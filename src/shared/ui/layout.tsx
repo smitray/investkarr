@@ -6,12 +6,18 @@ import Box from './box';
 import { SCREEN_HEIGHT } from '@utils';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const Layout = ({ children }: { children: Children }) => {
+type LayoutProperties = {
+  children: Children;
+  padding?: 'o' | 'ml';
+};
+
+const Layout = ({ children, padding = 'o' }: LayoutProperties) => {
   const { bottom } = useSafeAreaInsets();
   return (
     <Box
       flex={1}
       backgroundColor="background"
+      paddingHorizontal={padding}
       height={
         SCREEN_HEIGHT +
         (Platform.OS === 'android' ? Constants.statusBarHeight : 0)

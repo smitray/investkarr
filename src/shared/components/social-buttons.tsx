@@ -33,7 +33,9 @@ const SocialButtons = ({ type, data }: SocialButtonsProperties) => {
         height={0.5}
         backgroundColor="orBorder"
       />
-      <Text variant="orlabel">or</Text>
+      <Text variant={'labelSm'} color={'orColor'} marginHorizontal={'ml'}>
+        or
+      </Text>
       <Box
         flex={1}
         flexDirection="row"
@@ -43,7 +45,7 @@ const SocialButtons = ({ type, data }: SocialButtonsProperties) => {
     </Box>
   );
 
-  const LoginView = () => (
+  const SocialButtonsView = () => (
     <>
       {data.map((button) => {
         if (button.variant === 'apple' && Platform.OS !== 'ios') {
@@ -69,7 +71,7 @@ const SocialButtons = ({ type, data }: SocialButtonsProperties) => {
   );
   return (
     <Box flex={2} alignItems="center">
-      <LoginView />
+      <SocialButtonsView />
       {type === 'login' && (
         <>
           <ORView />

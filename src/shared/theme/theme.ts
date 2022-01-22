@@ -15,8 +15,9 @@ export const Pallete = {
   textMedium: '#483D5C',
   textLight: '#5F527A',
 
-  label: '#5F527A',
-  input: '#483D5C',
+  errorBorder: '#EF3535',
+  errorText: '#FF6369',
+  errorDefaultBorder: '#c5c5c5',
 
   appleButton: '#18141f',
 
@@ -38,6 +39,7 @@ const theme = createTheme({
     o: 0,
     xs: 4,
     s: 8,
+    ms: 12,
     m: 16,
     ml: 20,
     l: 24,
@@ -53,13 +55,23 @@ const theme = createTheme({
     m: 26,
   },
   textVariants: {
+    body1: {
+      fontSize: 16,
+      lineHeight: 20.83,
+      fontFamily: 'regular',
+    },
     obTitle: {
       fontSize: 24,
-      lineHeight: 32.4,
+      lineHeight: 31.25,
       fontFamily: 'bold',
     },
     obDescription: {
       fontSize: 18,
+      lineHeight: 18.23,
+      fontFamily: 'regular',
+    },
+    authDescription: {
+      fontSize: 14,
       lineHeight: 18.23,
       fontFamily: 'regular',
     },
@@ -68,12 +80,10 @@ const theme = createTheme({
       lineHeight: 20.83,
       fontFamily: 'bold',
     },
-    orlabel: {
+    labelSm: {
       fontSize: 12,
       lineHeight: 15.62,
       fontFamily: 'regular',
-      color: 'orColor',
-      marginHorizontal: 'ml',
     },
     authAlterLinkBase: {
       fontSize: 13,

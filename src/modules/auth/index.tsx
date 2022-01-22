@@ -4,7 +4,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { RootStackParameterList } from '@tp/stack';
 import { OnBoarding, assets as OnBoardingAssets } from './onboarding';
 import { LoginLanding, assets as LoginLandingAssets } from './login';
-import { SignUpLanding, assets as SignUpLandingAssets } from './signup';
+import {
+  SignUpLanding,
+  assets as SignUpLandingAssets,
+  SignUpWithEmail,
+} from './signup';
 
 export const assets = [
   ...OnBoardingAssets,
@@ -37,6 +41,7 @@ const Navigation = () => {
           component={SignUpLanding}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name="SignupWihEmail" component={SignUpWithEmail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

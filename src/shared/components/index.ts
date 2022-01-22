@@ -3,3 +3,4 @@ export {
   default as SocialButtons,
   SocialButtonDataType,
 } from './social-buttons';
+export { default as AuthLayout } from './auth-layout';

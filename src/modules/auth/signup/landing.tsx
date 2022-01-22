@@ -23,22 +23,22 @@ const SignUpLanding = ({
     {
       key: 'google',
       variant: 'secondary',
-      label: 'Login with Google',
-      onPress: () => console.log('Login with Google pressed'),
+      label: 'Signup with Google',
+      onPress: () => console.log('Signup with Google pressed'),
       image: images.google,
     },
     {
       key: 'apple',
       variant: 'apple',
-      label: 'Login with Apple',
-      onPress: () => console.log('Login with Apple pressed'),
+      label: 'Signup with Apple',
+      onPress: () => console.log('Signup with Apple pressed'),
       image: images.apple,
     },
     {
       key: 'email',
       variant: 'primary',
-      label: 'Login with Email',
-      onPress: () => console.log('login with email pressed'),
+      label: 'Signup with Email',
+      onPress: () => navigation.navigate('SignupWihEmail'),
       image: images.email,
     },
   ];
