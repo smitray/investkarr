@@ -1,15 +1,30 @@
 import React from 'react';
-import { Box, Layout, Text } from '@ui';
-import { KeyboardAvoidingView, Platform } from 'react-native';
+import { Box, Button, Layout, Text } from '@ui';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native';
 import { Children } from '@tp/global';
 
 type AuthLayoutProperties = {
   title: string;
   description: string;
   children: Children;
+  label: string;
+  onPress: () => void;
+  disabled: boolean;
 };
 
-const AuthLayout = ({ title, description, children }: AuthLayoutProperties) => {
+const AuthLayout = ({
+  title,
+  description,
+  children,
+  label,
+  onPress,
+  disabled = false,
+}: AuthLayoutProperties) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -30,7 +45,14 @@ const AuthLayout = ({ title, description, children }: AuthLayoutProperties) => {
             {description.replace(/\\n/g, '\n')}
           </Text>
         </Box>
-        {children}
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <Box flex={4} alignItems={'center'}>
+            {children}
+          </Box>
+        </TouchableWithoutFeedback>
+        <Box flex={1}>
+          <Button label={label} onPress={onPress} disabled={disabled} />
+        </Box>
       </Layout>
     </KeyboardAvoidingView>
   );
