@@ -4002,6 +4002,11 @@ expo-modules-core@0.6.3:
     compare-versions "^3.4.0"
     invariant "^2.2.4"
 
+expo-secure-store@~11.1.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-11.1.0.tgz#2eb6e793a459e178feeb72bbeb40afc97e412bf6"
+  integrity sha512-LyCLqsoibP90Td4mSWc+un+xGNYnIuGOrfbp2aG2KAn1ZGcDL6muxIaFj7a/4Kh+EiCIoU5EPb1YjOATbmaBnQ==
+
 expo-splash-screen@~0.14.0, expo-splash-screen@~0.14.1:
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.14.1.tgz#7647c8b98c679b8313d24a7c14729402c3c16631"
@@ -8557,3 +8562,8 @@ yup@^0.32.11:
     nanoclone "^0.2.1"
     property-expr "^2.0.4"
     toposort "^2.0.2"
+
+zustand@^3.6.9:
+  version "3.6.9"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.6.9.tgz#f61a756ddea9f95c7ee7cfd3af2f88c10078afbc"
+  integrity sha512-OvDNu/jEWpRnEC7k8xh8GKjqYog7td6FZrLMuHs/IeI8WhrCwV+FngVuwMIFhp5kysZXr6emaeReMqjLGaldAQ==

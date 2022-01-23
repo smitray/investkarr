@@ -4,3 +4,7 @@ export { default as Layout } from './layout';
 export { default as Button } from './button';
 export { default as AuthBottomAlterLink } from './auth-bottom-alter-link';
 export { default as TextInput } from './text-input';
+export { default as Back } from './header/back';
+export { default as Logo } from './header/logo';
+export { default as Step } from './header/step';
+export { default as OTPInput } from './otp-view';

@@ -32,3 +32,6 @@ typings/
 
 # Optional eslint cache
 .eslintcache
+
+# all logs
+*.log

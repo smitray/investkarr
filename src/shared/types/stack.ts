@@ -3,4 +3,6 @@ export type RootStackParameterList = {
   LoginLanding: undefined;
   SignupLanding: undefined;
   SignupWihEmail: undefined;
+  VerifyEmail: undefined;
+  AddName: undefined;
 };

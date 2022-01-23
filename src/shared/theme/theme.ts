@@ -29,6 +29,7 @@ export const Pallete = {
   orColor: '#565656',
 
   white: '#FFFFFF',
+  transparent: 'rgba(255, 255, 255, 0)',
 };
 
 const theme = createTheme({
@@ -75,6 +76,11 @@ const theme = createTheme({
       lineHeight: 18.23,
       fontFamily: 'regular',
     },
+    authSubDescription: {
+      fontSize: 14,
+      lineHeight: 18.23,
+      fontFamily: 'medium',
+    },
     buttonLabel: {
       fontSize: 16,
       lineHeight: 20.83,
@@ -96,6 +102,11 @@ const theme = createTheme({
       lineHeight: 15.62,
       fontFamily: 'bold',
       color: 'primary',
+    },
+    step: {
+      fontSize: 14,
+      lineHeight: 18.23,
+      fontFamily: 'bold',
     },
   },
 });
