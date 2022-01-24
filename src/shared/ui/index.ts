@@ -8,3 +8,4 @@ export { default as Back } from './header/back';
 export { default as Logo } from './header/logo';
 export { default as Step } from './header/step';
 export { default as OTPInput } from './otp-view';
+export { default as ErrorMessage } from './error-message';

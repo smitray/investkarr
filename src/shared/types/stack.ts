@@ -5,4 +5,5 @@ export type RootStackParameterList = {
   SignupWihEmail: undefined;
   VerifyEmail: undefined;
   AddName: undefined;
+  SetPassword: undefined;
 };

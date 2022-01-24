@@ -11,6 +11,7 @@ import {
   SignUpWithEmail,
   VerifyEmail,
   AddName,
+  SetPassword,
 } from './signup';
 import { useTheme } from '@theme';
 
@@ -63,6 +64,7 @@ const Navigation = () => {
         <Stack.Screen name="SignupWihEmail" component={SignUpWithEmail} />
         <Stack.Screen name="VerifyEmail" component={VerifyEmail} />
         <Stack.Screen name="AddName" component={AddName} />
+        <Stack.Screen name="SetPassword" component={SetPassword} />
       </Stack.Navigator>
     </NavigationContainer>
   );
