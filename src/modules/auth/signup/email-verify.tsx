@@ -54,7 +54,7 @@ const EmailVerify = ({
       isSignupBar
       disabled={false}
     >
-      <OTPInput />
+      <OTPInput cellCount={6} />
     </AuthLayout>
   );
 };

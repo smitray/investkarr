@@ -19,6 +19,9 @@ export const Pallete = {
   errorText: '#FF6369',
   errorDefaultBorder: '#c5c5c5',
 
+  chipSuccess: '#F1EDFD',
+  chipError: '#FFF5F5',
+
   appleButton: '#18141f',
 
   background: '#FCFAFE',
@@ -39,6 +42,7 @@ const theme = createTheme({
   spacing: {
     o: 0,
     xs: 4,
+    sm: 6,
     s: 8,
     ms: 12,
     m: 16,
@@ -54,6 +58,7 @@ const theme = createTheme({
   },
   borderRadii: {
     m: 26,
+    s: 10,
   },
   textVariants: {
     body1: {
@@ -107,6 +112,11 @@ const theme = createTheme({
       fontSize: 14,
       lineHeight: 18.23,
       fontFamily: 'bold',
+    },
+    chip: {
+      fontSize: 12,
+      lineHeight: 15.62,
+      fontFamily: 'medium',
     },
   },
 });

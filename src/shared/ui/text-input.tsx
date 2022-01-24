@@ -5,15 +5,32 @@ import { moderateScale } from '@utils';
 import { TextInputProps } from 'react-native';
 import Box from './box';
 import Text from './text';
+import ErrorMessage from './error-message';
 
 type TextInputProperties = TextInputProps & {
   label: string;
+  isPassword?: boolean;
+  togglePassword?: boolean;
   errorMessage?: string | false;
+  passwordError?: {
+    minEight: boolean;
+    oneSpChar: boolean;
+    oneUpperCase: boolean;
+    oneDigit: boolean;
+  };
 };
 
 const TextInput = ({
   label,
   errorMessage = false,
+  isPassword = false,
+  togglePassword = false,
+  passwordError = {
+    minEight: false,
+    oneSpChar: false,
+    oneUpperCase: false,
+    oneDigit: false,
+  },
   ...rest
 }: TextInputProperties) => {
   const theme = useTheme();
@@ -22,6 +39,8 @@ const TextInput = ({
       <FloatingLabelInput
         label={label}
         hint={label}
+        isPassword={isPassword}
+        togglePassword={togglePassword}
         {...rest}
         labelStyles={{
           paddingLeft: 0,
@@ -46,11 +65,37 @@ const TextInput = ({
             ? theme.colors.errorBorder
             : theme.colors.errorDefaultBorder,
         }}
+        customHidePasswordImage={require('@assets/images/hide-password.png')}
+        customShowPasswordImage={require('@assets/images/show-password.png')}
       />
-      {errorMessage && (
+      {!isPassword && errorMessage && (
         <Text variant={'labelSm'} color={'errorText'} marginVertical={'ms'}>
           {errorMessage}
         </Text>
+      )}
+      {isPassword && (
+        <Box
+          flexDirection={'row'}
+          flexWrap={'wrap'}
+          justifyContent={'space-evenly'}
+        >
+          <ErrorMessage
+            isError={passwordError.minEight}
+            message="8 min. characters"
+          />
+          <ErrorMessage
+            isError={passwordError.oneSpChar}
+            message="1 special character (,.@/)"
+          />
+          <ErrorMessage
+            isError={passwordError.oneUpperCase}
+            message="1 upper case character (A-Z)"
+          />
+          <ErrorMessage
+            isError={passwordError.oneDigit}
+            message="1 digit (0-9)"
+          />
+        </Box>
       )}
     </Box>
   );

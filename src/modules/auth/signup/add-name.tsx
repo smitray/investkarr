@@ -6,6 +6,7 @@ import { AuthLayout } from '@components';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParameterList } from '@tp/stack';
 import { Keyboard } from 'react-native';
+import { useSignupStore } from '@store';
 
 type FormValues = {
   fname: string;
@@ -25,10 +26,11 @@ const validationSchema = Yup.object().shape({
 const AddName = ({
   navigation,
 }: StackScreenProps<RootStackParameterList, 'AddName'>) => {
+  const setCount = useSignupStore((state) => state.setCount);
   const onSubmit = ({ ...values }: FormValues) => {
-    console.log(values);
+    setCount();
     Keyboard.dismiss();
-    navigation.navigate('VerifyEmail');
+    navigation.navigate('SetPassword');
   };
 
   return (
@@ -57,6 +59,7 @@ const AddName = ({
             onChangeText={handleChange('fname')}
             onBlur={handleBlur('fname')}
             errorMessage={errors.fname && touched.fname && errors.fname}
+            autoCompleteType="username"
           />
           <TextInput
             label="Last name"
@@ -64,6 +67,7 @@ const AddName = ({
             onChangeText={handleChange('lname')}
             onBlur={handleBlur('lname')}
             errorMessage={errors.lname && touched.lname && errors.lname}
+            autoCompleteType="username"
           />
         </AuthLayout>
       )}
