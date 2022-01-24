@@ -5,6 +5,7 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
+  ScrollView,
 } from 'react-native';
 import { Children } from '@tp/global';
 import { moderateScale, SCREEN_WIDTH } from '@utils';
@@ -52,42 +53,44 @@ const AuthLayout = ({
         </Box>
       )}
       <Layout padding="ml">
-        <Box
-          flex={2}
-          justifyContent="center"
-          alignItems={'center'}
-          paddingBottom={'ms'}
-        >
-          <Text variant="obTitle" textAlign="center" color="textBlack">
-            {title}
-          </Text>
-          <Text
-            variant={'authDescription'}
-            color={'textLight'}
-            textAlign={'center'}
-            marginTop={'ms'}
+        <ScrollView>
+          <Box
+            flex={2}
+            justifyContent="center"
+            alignItems={'center'}
+            paddingBottom={'ms'}
           >
-            {description.replace(/\\n/g, '\n')}
-          </Text>
-          {subDescription && (
-            <Text
-              variant={'authSubDescription'}
-              color={'textMedium'}
-              textAlign={'center'}
-              marginTop={'s'}
-            >
-              {subDescription}
+            <Text variant="obTitle" textAlign="center" color="textBlack">
+              {title}
             </Text>
-          )}
-        </Box>
-        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-          <Box flex={3} alignItems={'center'}>
-            {children}
+            <Text
+              variant={'authDescription'}
+              color={'textLight'}
+              textAlign={'center'}
+              marginTop={'ms'}
+            >
+              {description.replace(/\\n/g, '\n')}
+            </Text>
+            {subDescription && (
+              <Text
+                variant={'authSubDescription'}
+                color={'textMedium'}
+                textAlign={'center'}
+                marginTop={'s'}
+              >
+                {subDescription}
+              </Text>
+            )}
           </Box>
-        </TouchableWithoutFeedback>
-        <Box flex={1}>
-          <Button label={label} onPress={onPress} disabled={disabled} />
-        </Box>
+          <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <Box flex={3} alignItems={'center'}>
+              {children}
+            </Box>
+          </TouchableWithoutFeedback>
+          <Box flex={1}>
+            <Button label={label} onPress={onPress} disabled={disabled} />
+          </Box>
+        </ScrollView>
       </Layout>
     </KeyboardAvoidingView>
   );
