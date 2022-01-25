@@ -15,6 +15,7 @@ import {
   AddPhone,
   VerifyPhone,
   AddPAN,
+  AddDOB,
 } from './signup';
 import { useTheme } from '@theme';
 
@@ -31,7 +32,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="OnBoarding"
+        initialRouteName="AddDOB"
         screenOptions={{
           headerStyle: {
             backgroundColor: theme.colors.background,
@@ -71,6 +72,7 @@ const Navigation = () => {
         <Stack.Screen name="AddPhone" component={AddPhone} />
         <Stack.Screen name="VerifyPhone" component={VerifyPhone} />
         <Stack.Screen name="AddPAN" component={AddPAN} />
+        <Stack.Screen name="AddDOB" component={AddDOB} />
       </Stack.Navigator>
     </NavigationContainer>
   );

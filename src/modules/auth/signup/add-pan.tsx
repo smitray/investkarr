@@ -24,10 +24,10 @@ const validationSchema = Yup.object().shape({
 
 const WithEmail = ({
   navigation,
-}: StackScreenProps<RootStackParameterList, 'SignupWihEmail'>) => {
+}: StackScreenProps<RootStackParameterList, 'AddPAN'>) => {
   const onSubmit = () => {
     Keyboard.dismiss();
-    navigation.navigate('VerifyEmail');
+    navigation.navigate('AddDOB');
   };
 
   return (

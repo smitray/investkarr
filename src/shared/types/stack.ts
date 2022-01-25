@@ -9,4 +9,5 @@ export type RootStackParameterList = {
   AddPhone: undefined;
   VerifyPhone: undefined;
   AddPAN: undefined;
+  AddDOB: undefined;
 };

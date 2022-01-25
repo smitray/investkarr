@@ -7,7 +7,7 @@ import Box from './box';
 import Text from './text';
 import ErrorMessage from './error-message';
 
-type TextInputProperties = TextInputProps & {
+export type TextInputProperties = TextInputProps & {
   label: string;
   isPassword?: boolean;
   togglePassword?: boolean;
@@ -19,6 +19,7 @@ type TextInputProperties = TextInputProps & {
     oneDigit: boolean;
   };
   phone?: boolean;
+  buttonInput?: boolean;
 };
 
 const TextInput = ({
@@ -33,6 +34,7 @@ const TextInput = ({
     oneDigit: false,
   },
   phone = false,
+  buttonInput = false,
   ...rest
 }: TextInputProperties) => {
   const theme = useTheme();
@@ -61,7 +63,7 @@ const TextInput = ({
         }}
         containerStyles={{
           borderWidth: 0,
-          borderBottomWidth: 1.5,
+          borderBottomWidth: buttonInput ? 0 : 1.5,
           height: 60,
           borderColor: errorMessage
             ? theme.colors.errorBorder

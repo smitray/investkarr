@@ -9,3 +9,4 @@ export { default as Logo } from './header/logo';
 export { default as Step } from './header/step';
 export { default as OTPInput } from './otp-view';
 export { default as ErrorMessage } from './error-message';
+export { default as ButtonInput } from './button-input';
