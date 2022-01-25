@@ -2,7 +2,7 @@ import create from 'zustand';
 
 type SignupProperties = {
   count: number;
-  setCount: () => void;
+  setCount: (newStep: number) => void;
   email: string;
   setEmail: (newEmail: string) => void;
   phone: string;
@@ -13,7 +13,7 @@ type SignupProperties = {
 
 const signupStore = create<SignupProperties>((set) => ({
   count: 1,
-  setCount: () => set((state) => ({ count: state.count + 1 })),
+  setCount: (newStep) => set((state) => ({ ...state, count: newStep })),
   email: '',
   setEmail: (newEmail) => set((state) => ({ ...state, email: newEmail })),
   phone: '',

@@ -12,6 +12,9 @@ import {
   VerifyEmail,
   AddName,
   SetPassword,
+  AddPhone,
+  VerifyPhone,
+  AddPAN,
 } from './signup';
 import { useTheme } from '@theme';
 
@@ -65,6 +68,9 @@ const Navigation = () => {
         <Stack.Screen name="VerifyEmail" component={VerifyEmail} />
         <Stack.Screen name="AddName" component={AddName} />
         <Stack.Screen name="SetPassword" component={SetPassword} />
+        <Stack.Screen name="AddPhone" component={AddPhone} />
+        <Stack.Screen name="VerifyPhone" component={VerifyPhone} />
+        <Stack.Screen name="AddPAN" component={AddPAN} />
       </Stack.Navigator>
     </NavigationContainer>
   );

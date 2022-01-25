@@ -6,4 +6,7 @@ export type RootStackParameterList = {
   VerifyEmail: undefined;
   AddName: undefined;
   SetPassword: undefined;
+  AddPhone: undefined;
+  VerifyPhone: undefined;
+  AddPAN: undefined;
 };

@@ -7,6 +7,10 @@ import { Keyboard } from 'react-native';
 import shallow from 'zustand/shallow';
 import { useSignupStore } from '@store';
 
+/**
+ * FIXME: Keyboard avoiding view issue
+ */
+
 const SetPassword = ({
   navigation,
 }: StackScreenProps<RootStackParameterList, 'SetPassword'>) => {
@@ -21,16 +25,16 @@ const SetPassword = ({
     usePasswordValidation(password);
 
   const handleSubmit = () => {
-    setCount();
+    setCount(4);
     Keyboard.dismiss();
-    navigation.navigate('VerifyEmail');
+    navigation.navigate('AddPhone');
   };
   return (
     <AuthLayout
       title="Set a password"
       description="To access your account linked to"
       subDescription={email}
-      label="Continue"
+      label="Confirm"
       onPress={handleSubmit}
       disabled={disabled}
       isSignupBar

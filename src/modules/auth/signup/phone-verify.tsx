@@ -5,12 +5,12 @@ import { RootStackParameterList } from '@tp/stack';
 
 const EmailVerify = ({
   navigation,
-}: StackScreenProps<RootStackParameterList, 'VerifyEmail'>) => {
+}: StackScreenProps<RootStackParameterList, 'VerifyPhone'>) => {
   function handleSubmit() {
-    navigation.navigate('AddName');
+    navigation.navigate('AddPAN');
   }
 
-  return <OTPScreen type="email" onPress={handleSubmit} />;
+  return <OTPScreen type="phone" onPress={handleSubmit} />;
 };
 
 export default EmailVerify;

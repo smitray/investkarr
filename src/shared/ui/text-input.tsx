@@ -18,6 +18,7 @@ type TextInputProperties = TextInputProps & {
     oneUpperCase: boolean;
     oneDigit: boolean;
   };
+  phone?: boolean;
 };
 
 const TextInput = ({
@@ -31,6 +32,7 @@ const TextInput = ({
     oneUpperCase: false,
     oneDigit: false,
   },
+  phone = false,
   ...rest
 }: TextInputProperties) => {
   const theme = useTheme();
@@ -38,7 +40,7 @@ const TextInput = ({
     <Box width={'100%'} marginVertical={'s'}>
       <FloatingLabelInput
         label={label}
-        hint={label}
+        hint={!phone ? label : '+91 9999900000'}
         isPassword={isPassword}
         togglePassword={togglePassword}
         {...rest}
@@ -101,4 +103,4 @@ const TextInput = ({
   );
 };
 
-export default TextInput;
+export default React.memo(TextInput);

@@ -27,8 +27,8 @@ const AddName = ({
   navigation,
 }: StackScreenProps<RootStackParameterList, 'AddName'>) => {
   const setCount = useSignupStore((state) => state.setCount);
-  const onSubmit = ({ ...values }: FormValues) => {
-    setCount();
+  const onSubmit = () => {
+    setCount(3);
     Keyboard.dismiss();
     navigation.navigate('SetPassword');
   };

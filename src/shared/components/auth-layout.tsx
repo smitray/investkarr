@@ -53,7 +53,7 @@ const AuthLayout = ({
         </Box>
       )}
       <Layout padding="ml">
-        <ScrollView>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
           <Box
             flex={2}
             justifyContent="center"
