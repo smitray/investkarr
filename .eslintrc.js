@@ -65,7 +65,12 @@ module.exports = {
         // Disable nested ternary
         'unicorn/no-nested-ternary': 'off',
         // Disable function scope
-        // 'unicorn/consistent-function-scoping': 'off',
+        'unicorn/consistent-function-scoping': [
+          1,
+          {
+            checkArrowFunctions: false,
+          },
+        ],
         // Disable inline style
         'react-native/no-inline-styles': 'off',
       },

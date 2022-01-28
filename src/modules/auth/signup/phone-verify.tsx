@@ -3,7 +3,7 @@ import { OTPScreen } from '@components';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParameterList } from '@tp/stack';
 
-const EmailVerify = ({
+const PhoneVerify = ({
   navigation,
 }: StackScreenProps<RootStackParameterList, 'VerifyPhone'>) => {
   function handleSubmit() {
@@ -13,4 +13,4 @@ const EmailVerify = ({
   return <OTPScreen type="phone" onPress={handleSubmit} />;
 };
 
-export default EmailVerify;
+export default PhoneVerify;

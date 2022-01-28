@@ -12,8 +12,8 @@ const App = () => {
   return (
     <ThemeProvider {...{ theme }}>
       <LoadAssets {...{ assets }}>
+        <StatusBar style="inverted" />
         <RootNavigation />
-        <StatusBar style="auto" />
       </LoadAssets>
     </ThemeProvider>
   );

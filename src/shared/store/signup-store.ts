@@ -9,6 +9,8 @@ type SignupProperties = {
   setPhone: (newPhone: string) => void;
   emailVerified: boolean;
   setEmailVerified: () => void;
+  pin: string;
+  setPin: (newPin: string) => void;
 };
 
 const signupStore = create<SignupProperties>((set) => ({
@@ -21,6 +23,8 @@ const signupStore = create<SignupProperties>((set) => ({
   emailVerified: false,
   setEmailVerified: () =>
     set((state) => ({ emailVerified: !state.emailVerified })),
+  pin: '',
+  setPin: (newPin) => set((state) => ({ ...state, pin: newPin })),
 }));
 
 export default signupStore;
