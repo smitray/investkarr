@@ -21,13 +21,17 @@ const AuthBottomAlterLink = ({ onPress, type }: LinkType) => {
           {type === 'login' && (
             <Text variant="authAlterLinkBase" textTransform="capitalize">
               don&apos;t have an account?{' '}
-              <Text variant="authAlterSpan">Signup</Text>
+              <Text variant="authAlterSpan" color={'primary'}>
+                Signup
+              </Text>
             </Text>
           )}
           {type === 'signup' && (
             <Text variant="authAlterLinkBase" textTransform="capitalize">
               already have an account?{' '}
-              <Text variant="authAlterSpan">Login</Text>
+              <Text variant="authAlterSpan" color={'primary'}>
+                Login
+              </Text>
             </Text>
           )}
         </TouchableOpacity>

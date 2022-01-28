@@ -7,10 +7,6 @@ import { Keyboard } from 'react-native';
 import shallow from 'zustand/shallow';
 import { useSignupStore } from '@store';
 
-/**
- * FIXME: Keyboard avoiding view issue
- */
-
 const SetPassword = ({
   navigation,
 }: StackScreenProps<RootStackParameterList, 'SetPassword'>) => {

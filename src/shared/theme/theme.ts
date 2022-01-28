@@ -33,6 +33,7 @@ export const Pallete = {
 
   white: '#FFFFFF',
   transparent: 'rgba(255, 255, 255, 0)',
+  transparentBorder: 'rgba(138, 149, 158, 0.3)',
 };
 
 const theme = createTheme({
@@ -50,6 +51,7 @@ const theme = createTheme({
     l: 24,
     ll: 28,
     xl: 30,
+    mxl: 38,
     xxl: 65,
   },
   breakpoints: {
@@ -106,7 +108,6 @@ const theme = createTheme({
       fontSize: 12,
       lineHeight: 15.62,
       fontFamily: 'bold',
-      color: 'primary',
     },
     step: {
       fontSize: 14,
@@ -117,6 +118,11 @@ const theme = createTheme({
       fontSize: 12,
       lineHeight: 15.62,
       fontFamily: 'medium',
+    },
+    successLabel: {
+      fontSize: 18,
+      lineHeight: 23.44,
+      fontFamily: 'bold',
     },
   },
 });

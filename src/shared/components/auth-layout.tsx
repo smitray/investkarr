@@ -6,31 +6,34 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ScrollView,
+  Image,
 } from 'react-native';
 import { Children } from '@tp/global';
 import { moderateScale, SCREEN_WIDTH } from '@utils';
 import { useSignupStore } from '@store';
 
 type AuthLayoutProperties = {
-  title: string;
-  description: string;
-  subDescription?: string;
+  title?: string;
+  description?: string;
+  subDescription?: string | false;
   children: Children;
   label: string;
   onPress: () => void;
   disabled: boolean;
   isSignupBar?: boolean;
+  icon?: boolean;
 };
 
 const AuthLayout = ({
-  title,
-  description,
-  subDescription,
+  title = '',
+  description = '',
+  subDescription = false,
   children,
   label,
   onPress,
   disabled = false,
   isSignupBar = false,
+  icon = false,
 }: AuthLayoutProperties) => {
   const count = useSignupStore((state) => state.count);
   return (
@@ -60,26 +63,47 @@ const AuthLayout = ({
             alignItems={'center'}
             paddingBottom={'ms'}
           >
-            <Text variant="obTitle" textAlign="center" color="textBlack">
-              {title}
-            </Text>
-            <Text
-              variant={'authDescription'}
-              color={'textLight'}
-              textAlign={'center'}
-              marginTop={'ms'}
-            >
-              {description.replace(/\\n/g, '\n')}
-            </Text>
-            {subDescription && (
-              <Text
-                variant={'authSubDescription'}
-                color={'textMedium'}
-                textAlign={'center'}
-                marginTop={'s'}
-              >
-                {subDescription}
-              </Text>
+            {icon ? (
+              <>
+                <Image
+                  source={require('@assets/images/pin-logo.png')}
+                  style={{
+                    width: moderateScale(48),
+                    height: moderateScale(48),
+                  }}
+                />
+                <Text
+                  variant={'buttonLabel'}
+                  color={'textBlack'}
+                  marginTop={'mxl'}
+                >
+                  {title}
+                </Text>
+              </>
+            ) : (
+              <>
+                <Text variant="obTitle" textAlign="center" color="textBlack">
+                  {title}
+                </Text>
+                <Text
+                  variant={'authDescription'}
+                  color={'textLight'}
+                  textAlign={'center'}
+                  marginTop={'ms'}
+                >
+                  {description.replace(/\\n/g, '\n')}
+                </Text>
+                {subDescription && (
+                  <Text
+                    variant={'authSubDescription'}
+                    color={'textMedium'}
+                    textAlign={'center'}
+                    marginTop={'s'}
+                  >
+                    {subDescription}
+                  </Text>
+                )}
+              </>
             )}
           </Box>
           <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>

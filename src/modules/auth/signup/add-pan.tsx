@@ -6,6 +6,7 @@ import { AuthLayout } from '@components';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParameterList } from '@tp/stack';
 import { Keyboard } from 'react-native';
+import { useSignupStore } from '@store';
 // import { useSignupStore } from '@store';
 
 type FormValues = {
@@ -22,11 +23,13 @@ const validationSchema = Yup.object().shape({
     .matches(/^[A-Z]{5}\d{4}[A-Z]$/, 'PAN is invalid'),
 });
 
-const WithEmail = ({
+const VerifyPAN = ({
   navigation,
 }: StackScreenProps<RootStackParameterList, 'AddPAN'>) => {
+  const setCount = useSignupStore((state) => state.setCount);
   const onSubmit = () => {
     Keyboard.dismiss();
+    setCount(6);
     navigation.navigate('AddDOB');
   };
 
@@ -64,4 +67,4 @@ const WithEmail = ({
   );
 };
 
-export default WithEmail;
+export default VerifyPAN;

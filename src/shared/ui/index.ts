@@ -10,3 +10,4 @@ export { default as Step } from './header/step';
 export { default as OTPInput } from './otp-view';
 export { default as ErrorMessage } from './error-message';
 export { default as ButtonInput } from './button-input';
+export { default as ResendOTP } from './resend-otp';

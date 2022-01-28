@@ -16,8 +16,11 @@ import {
   VerifyPhone,
   AddPAN,
   AddDOB,
+  Pin,
+  SignUpSuccess,
 } from './signup';
 import { useTheme } from '@theme';
+import Dummy from './dummy';
 
 export const assets = [
   ...OnBoardingAssets,
@@ -32,7 +35,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="AddDOB"
+        initialRouteName="OnBoarding"
         screenOptions={{
           headerStyle: {
             backgroundColor: theme.colors.background,
@@ -73,6 +76,33 @@ const Navigation = () => {
         <Stack.Screen name="VerifyPhone" component={VerifyPhone} />
         <Stack.Screen name="AddPAN" component={AddPAN} />
         <Stack.Screen name="AddDOB" component={AddDOB} />
+        <Stack.Screen
+          name="SignupSuccess"
+          component={SignUpSuccess}
+          options={{
+            headerRight: () => false,
+            headerLeft: () => false,
+          }}
+        />
+
+        {/* pin screen */}
+        <Stack.Screen
+          name="Pin"
+          component={Pin}
+          options={{
+            headerRight: () => false,
+          }}
+        />
+
+        {/* dummy screen */}
+        <Stack.Screen
+          name="Dummy"
+          component={Dummy}
+          options={{
+            headerRight: () => false,
+            headerLeft: () => false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -7,3 +7,5 @@ export { default as AddPhone } from './add-phone';
 export { default as VerifyPhone } from './phone-verify';
 export { default as AddPAN } from './add-pan';
 export { default as AddDOB } from './add-dob';
+export { default as Pin } from './pin';
+export { default as SignUpSuccess } from './success';
