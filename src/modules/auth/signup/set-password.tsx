@@ -47,6 +47,7 @@ const SetPassword = ({
           oneUpperCase: !oneUpperCase,
           oneDigit: !oneDigit,
         }}
+        setPassword
       />
     </AuthLayout>
   );

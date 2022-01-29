@@ -19,4 +19,5 @@ export type RootStackParameterList = {
   SignupSuccess: undefined;
   Pin: PinScreenParameters;
   Dummy: undefined;
+  LoginWithEmail: undefined;
 };

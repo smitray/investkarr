@@ -16,6 +16,8 @@ const Pin = ({
       });
     } else if (type === 'confirm' && flow === 'signup') {
       navigation.navigate('SignupSuccess');
+    } else if (type === 'pin' && flow === 'login') {
+      navigation.navigate('Dummy');
     }
   };
   return <PinScreen type={type} onPress={handleSubmit} />;

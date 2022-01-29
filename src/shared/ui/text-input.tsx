@@ -10,6 +10,7 @@ import ErrorMessage from './error-message';
 export type TextInputProperties = TextInputProps & {
   label: string;
   isPassword?: boolean;
+  setPassword?: boolean;
   togglePassword?: boolean;
   errorMessage?: string | false;
   passwordError?: {
@@ -33,6 +34,7 @@ const TextInput = ({
     oneUpperCase: false,
     oneDigit: false,
   },
+  setPassword = false,
   phone = false,
   buttonInput = false,
   ...rest
@@ -72,12 +74,12 @@ const TextInput = ({
         customHidePasswordImage={require('@assets/images/hide-password.png')}
         customShowPasswordImage={require('@assets/images/show-password.png')}
       />
-      {!isPassword && errorMessage && (
+      {!setPassword && errorMessage && (
         <Text variant={'labelSm'} color={'errorText'} marginVertical={'ms'}>
           {errorMessage}
         </Text>
       )}
-      {isPassword && (
+      {setPassword && (
         <Box
           flexDirection={'row'}
           flexWrap={'wrap'}

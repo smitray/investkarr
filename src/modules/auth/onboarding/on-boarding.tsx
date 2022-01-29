@@ -8,11 +8,6 @@ import { comonStyle } from '@cmSt';
 import { useTheme } from '@theme';
 import { RootStackParameterList } from '@tp/stack';
 
-/**
- * TODO: Need to export images for better caching
- * TODO: Add routes to signup and login
- */
-
 type SlideType = {
   key: string;
   title: string;

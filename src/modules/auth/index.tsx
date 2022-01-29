@@ -4,7 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { RootStackParameterList } from '@tp/stack';
 import { OnBoarding, assets as OnBoardingAssets } from './onboarding';
-import { LoginLanding, assets as LoginLandingAssets } from './login';
+import {
+  LoginLanding,
+  assets as LoginLandingAssets,
+  LoginWithEmail,
+} from './login';
 import {
   SignUpLanding,
   assets as SignUpLandingAssets,
@@ -82,6 +86,15 @@ const Navigation = () => {
           options={{
             headerRight: () => false,
             headerLeft: () => false,
+          }}
+        />
+
+        {/* login flow */}
+        <Stack.Screen
+          name="LoginWithEmail"
+          component={LoginWithEmail}
+          options={{
+            headerRight: () => false,
           }}
         />
 

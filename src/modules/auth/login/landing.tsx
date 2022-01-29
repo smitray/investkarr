@@ -24,7 +24,7 @@ const landing = ({
       key: 'email',
       variant: 'primary',
       label: 'Login with Email',
-      onPress: () => console.log('login with email pressed'),
+      onPress: () => navigation.navigate('LoginWithEmail'),
       image: images.email,
     },
     {
