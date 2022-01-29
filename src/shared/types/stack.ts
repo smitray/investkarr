@@ -1,4 +1,4 @@
-import { PinProperties } from '@components';
+import { PinProperties, OTPProperties } from '@components';
 
 type PinScreenParameters = PinProperties & {
   flow: 'signup' | 'login';
@@ -8,15 +8,18 @@ export type RootStackParameterList = {
   OnBoarding: undefined;
   LoginLanding: undefined;
   SignupLanding: undefined;
-  SignupWihEmail: undefined;
-  VerifyEmail: undefined;
+  WihEmail: {
+    flow: 'signup' | 'login';
+  };
   AddName: undefined;
   SetPassword: undefined;
-  AddPhone: undefined;
-  VerifyPhone: undefined;
+  Phone: {
+    flow: 'signup' | 'login';
+  };
   AddPAN: undefined;
   AddDOB: undefined;
   SignupSuccess: undefined;
+  OTPVerify: OTPProperties;
   Pin: PinScreenParameters;
   Dummy: undefined;
   LoginWithEmail: undefined;

@@ -25,14 +25,19 @@ const validationSchema = Yup.object().shape({
     ),
 });
 
-const AddPhone = ({
+const Phone = ({
   navigation,
-}: StackScreenProps<RootStackParameterList, 'AddPhone'>) => {
+  route,
+}: StackScreenProps<RootStackParameterList, 'Phone'>) => {
+  const { flow } = route.params;
   const setPhone = useSignupStore((state) => state.setPhone);
   const onSubmit = ({ ...values }: FormValues) => {
     setPhone(values.phone);
     Keyboard.dismiss();
-    navigation.navigate('VerifyPhone');
+    navigation.navigate('OTPVerify', {
+      type: 'phone',
+      flow,
+    });
   };
 
   return (
@@ -48,12 +53,16 @@ const AddPhone = ({
         dirty,
       }) => (
         <AuthLayout
-          title="Verify your mobile!"
-          description="Make sure to use the number linked to \n your aadhar"
+          title={flow === 'signup' ? 'Verify your mobile!' : 'Welcome back'}
+          description={
+            flow === 'signup'
+              ? 'Make sure to use the number linked to \n your aadhar'
+              : 'Nice to meet you again!'
+          }
           label="Send OTP"
           onPress={handleSubmit}
           disabled={!(isValid && dirty)}
-          isSignupBar
+          isSignupBar={flow === 'signup'}
         >
           <TextInput
             label="Mobile number"
@@ -72,4 +81,4 @@ const AddPhone = ({
   );
 };
 
-export default AddPhone;
+export default Phone;

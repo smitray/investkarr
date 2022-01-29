@@ -38,7 +38,7 @@ const SignUpLanding = ({
       key: 'email',
       variant: 'primary',
       label: 'Signup with Email',
-      onPress: () => navigation.navigate('SignupWihEmail'),
+      onPress: () => navigation.navigate('WihEmail', { flow: 'signup' }),
       image: images.email,
     },
   ];

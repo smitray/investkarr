@@ -1,24 +1,33 @@
 import { useSignupStore } from '@store';
 import { OTPInput } from '@ui';
 import React, { useState } from 'react';
+import shallow from 'zustand/shallow';
 import AuthLayout from '../auth-layout';
 import otpValidation from '../hooks/otp-validation';
 
-type OTPScreenProperties = {
+export type OTPProperties = {
   type: 'email' | 'phone';
+  flow: 'signup' | 'login';
+};
+
+type OTPScreenProperties = OTPProperties & {
   onPress: () => void;
 };
 
-const OTPScreen = ({ type, onPress }: OTPScreenProperties) => {
-  const setCount = useSignupStore((state) => state.setCount);
-  const email = useSignupStore((state) => state.email);
-  const phone = useSignupStore((state) => state.phone);
+const OTPScreen = ({ type, onPress, flow = 'login' }: OTPScreenProperties) => {
+  const [email, phone, setCount, setCounter] = useSignupStore(
+    (state) => [state.email, state.phone, state.setCount, state.setCounter],
+    shallow,
+  );
   const [value, setValue] = useState('');
-
   const { disabled } = otpValidation(value);
 
   const handleSubmit = () => {
-    setCount(type === 'email' ? 2 : 5);
+    if (flow === 'signup') {
+      setCount(type === 'email' ? 2 : 5);
+    }
+    setValue('');
+    setCounter(59);
     onPress();
   };
   return (
@@ -28,7 +37,7 @@ const OTPScreen = ({ type, onPress }: OTPScreenProperties) => {
       subDescription={type === 'email' ? email : phone}
       label="Verify"
       onPress={handleSubmit}
-      isSignupBar
+      isSignupBar={flow === 'signup'}
       disabled={disabled}
     >
       <OTPInput cellCount={6} setValue={setValue} value={value} />

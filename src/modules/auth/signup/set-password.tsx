@@ -23,7 +23,9 @@ const SetPassword = ({
   const handleSubmit = () => {
     setCount(4);
     Keyboard.dismiss();
-    navigation.navigate('AddPhone');
+    navigation.navigate('Phone', {
+      flow: 'signup',
+    });
   };
   return (
     <AuthLayout

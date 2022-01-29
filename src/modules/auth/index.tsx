@@ -12,19 +12,15 @@ import {
 import {
   SignUpLanding,
   assets as SignUpLandingAssets,
-  SignUpWithEmail,
-  VerifyEmail,
   AddName,
   SetPassword,
-  AddPhone,
-  VerifyPhone,
   AddPAN,
   AddDOB,
-  Pin,
   SignUpSuccess,
 } from './signup';
 import { useTheme } from '@theme';
-import Dummy from './dummy';
+import Dummy from './shared/dummy';
+import { OTPVerify, Phone, Pin, WithEmail } from './shared';
 
 export const assets = [
   ...OnBoardingAssets,
@@ -72,12 +68,8 @@ const Navigation = () => {
           component={SignUpLanding}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="SignupWihEmail" component={SignUpWithEmail} />
-        <Stack.Screen name="VerifyEmail" component={VerifyEmail} />
         <Stack.Screen name="AddName" component={AddName} />
         <Stack.Screen name="SetPassword" component={SetPassword} />
-        <Stack.Screen name="AddPhone" component={AddPhone} />
-        <Stack.Screen name="VerifyPhone" component={VerifyPhone} />
         <Stack.Screen name="AddPAN" component={AddPAN} />
         <Stack.Screen name="AddDOB" component={AddDOB} />
         <Stack.Screen
@@ -98,13 +90,37 @@ const Navigation = () => {
           }}
         />
 
-        {/* pin screen */}
+        {/* shared screen */}
         <Stack.Screen
           name="Pin"
           component={Pin}
           options={{
             headerRight: () => false,
           }}
+        />
+        <Stack.Screen
+          name="OTPVerify"
+          component={OTPVerify}
+          options={({ route }) => ({
+            headerRight: () =>
+              route.params.flow === 'login' ? false : <Step />,
+          })}
+        />
+        <Stack.Screen
+          name="WihEmail"
+          component={WithEmail}
+          options={({ route }) => ({
+            headerRight: () =>
+              route.params.flow === 'login' ? false : <Step />,
+          })}
+        />
+        <Stack.Screen
+          name="Phone"
+          component={Phone}
+          options={({ route }) => ({
+            headerRight: () =>
+              route.params.flow === 'login' ? false : <Step />,
+          })}
         />
 
         {/* dummy screen */}

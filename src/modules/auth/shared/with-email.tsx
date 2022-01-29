@@ -24,13 +24,18 @@ const validationSchema = Yup.object().shape({
 
 const WithEmail = ({
   navigation,
-}: StackScreenProps<RootStackParameterList, 'SignupWihEmail'>) => {
+  route,
+}: StackScreenProps<RootStackParameterList, 'WihEmail'>) => {
+  const { flow } = route.params;
   const setEmail = useSignupStore((state) => state.setEmail);
 
   const onSubmit = ({ ...values }: FormValues) => {
     setEmail(values.email);
     Keyboard.dismiss();
-    navigation.navigate('VerifyEmail');
+    navigation.navigate('OTPVerify', {
+      type: 'email',
+      flow,
+    });
   };
 
   return (
@@ -46,8 +51,12 @@ const WithEmail = ({
         dirty,
       }) => (
         <AuthLayout
-          title="Nice to meet you"
-          description="Choose the email you would like to use to \n log in to your account"
+          title={flow === 'signup' ? 'Nice to meet you' : 'Account recovery'}
+          description={
+            flow === 'signup'
+              ? 'Choose the email you would like to use to \n log in to your account'
+              : 'this helps to show that this account realy \n belongs to you'
+          }
           label="Send OTP"
           onPress={handleSubmit}
           disabled={!(isValid && dirty)}

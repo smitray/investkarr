@@ -6,7 +6,7 @@ export {
 export { default as AuthLayout } from './auth-layout';
 
 //All screens here
-export { default as OTPScreen } from './screens/otp-screen';
+export { default as OTPScreen, OTPProperties } from './screens/otp-screen';
 export { default as PinScreen, PinProperties } from './screens/pin';
 
 // All hooks here

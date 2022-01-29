@@ -6,7 +6,6 @@ import { AuthLayout } from '@components';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParameterList } from '@tp/stack';
 import { Keyboard } from 'react-native';
-import { useSignupStore } from '@store';
 
 type FormValues = {
   email: string;
@@ -30,7 +29,7 @@ const validationSchema = Yup.object().shape({
 const WithEmail = ({
   navigation,
 }: StackScreenProps<RootStackParameterList, 'LoginWithEmail'>) => {
-  const onSubmit = ({ ...values }: FormValues) => {
+  const onSubmit = () => {
     Keyboard.dismiss();
     navigation.navigate('Pin', {
       type: 'pin',
@@ -56,7 +55,6 @@ const WithEmail = ({
           label="Login"
           onPress={handleSubmit}
           disabled={!(isValid && dirty)}
-          isSignupBar
         >
           <TextInput
             label="Enter email"

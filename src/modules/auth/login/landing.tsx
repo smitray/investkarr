@@ -42,6 +42,11 @@ const landing = ({
       image: images.apple,
     },
   ];
+  const handlePhoneLogin = () => {
+    navigation.navigate('Phone', {
+      flow: 'login',
+    });
+  };
   return (
     <Layout>
       <Box
@@ -62,7 +67,7 @@ const landing = ({
           />
         </Box>
       </Box>
-      <SocialButtons type="login" data={data} />
+      <SocialButtons type="login" data={data} onPress={handlePhoneLogin} />
       <AuthBottomAlterLink
         type="login"
         onPress={() => navigation.navigate('SignupLanding')}

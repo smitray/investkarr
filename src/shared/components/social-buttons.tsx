@@ -14,9 +14,14 @@ export type SocialButtonDataType = {
 type SocialButtonsProperties = {
   type: 'login' | 'signup';
   data: Array<SocialButtonDataType>;
+  onPress?: () => void;
 };
 
-const SocialButtons = ({ type, data }: SocialButtonsProperties) => {
+const SocialButtons = ({
+  type,
+  data,
+  onPress = () => {},
+}: SocialButtonsProperties) => {
   const theme = useTheme();
 
   const ORView = () => (
@@ -78,7 +83,7 @@ const SocialButtons = ({ type, data }: SocialButtonsProperties) => {
           <Button
             variant="primary"
             label="Login with Phone"
-            onPress={() => console.log('login with email pressed')}
+            onPress={onPress}
             style={{ marginVertical: theme.spacing.s }}
             imageSource={require('@assets/images/phone-fill.png')}
             imageStyle={{
