@@ -13,14 +13,11 @@ import {
   SignUpLanding,
   assets as SignUpLandingAssets,
   AddName,
-  SetPassword,
-  AddPAN,
-  AddDOB,
   SignUpSuccess,
 } from './signup';
 import { useTheme } from '@theme';
 import Dummy from './shared/dummy';
-import { OTPVerify, Phone, Pin, WithEmail } from './shared';
+import { DOB, OTPVerify, PAN, Password, Phone, Pin, WithEmail } from './shared';
 
 export const assets = [
   ...OnBoardingAssets,
@@ -69,9 +66,6 @@ const Navigation = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen name="AddName" component={AddName} />
-        <Stack.Screen name="SetPassword" component={SetPassword} />
-        <Stack.Screen name="AddPAN" component={AddPAN} />
-        <Stack.Screen name="AddDOB" component={AddDOB} />
         <Stack.Screen
           name="SignupSuccess"
           component={SignUpSuccess}
@@ -117,6 +111,30 @@ const Navigation = () => {
         <Stack.Screen
           name="Phone"
           component={Phone}
+          options={({ route }) => ({
+            headerRight: () =>
+              route.params.flow === 'login' ? false : <Step />,
+          })}
+        />
+        <Stack.Screen
+          name="DOB"
+          component={DOB}
+          options={({ route }) => ({
+            headerRight: () =>
+              route.params.flow === 'login' ? false : <Step />,
+          })}
+        />
+        <Stack.Screen
+          name="PAN"
+          component={PAN}
+          options={({ route }) => ({
+            headerRight: () =>
+              route.params.flow === 'login' ? false : <Step />,
+          })}
+        />
+        <Stack.Screen
+          name="Password"
+          component={Password}
           options={({ route }) => ({
             headerRight: () =>
               route.params.flow === 'login' ? false : <Step />,

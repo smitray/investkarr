@@ -14,13 +14,28 @@ const Pin = ({
         type: 'confirm',
         flow,
       });
+    } else if (type === 'pin') {
+      navigation.navigate('Dummy');
     } else if (type === 'confirm' && flow === 'signup') {
       navigation.navigate('SignupSuccess');
-    } else if (type === 'pin' && flow === 'login') {
+    } else if (type === 'confirm' && flow === 'login') {
       navigation.navigate('Dummy');
     }
   };
-  return <PinScreen type={type} onPress={handleSubmit} />;
+  const handlePIN = () => {
+    navigation.navigate('PAN', {
+      flow,
+      type: 'phone',
+    });
+  };
+  return (
+    <PinScreen
+      type={type}
+      onPress={handleSubmit}
+      flow={flow}
+      forgotPin={handlePIN}
+    />
+  );
 };
 
 export default Pin;

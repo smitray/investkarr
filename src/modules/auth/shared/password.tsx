@@ -7,11 +7,12 @@ import { Keyboard } from 'react-native';
 import shallow from 'zustand/shallow';
 import { useSignupStore } from '@store';
 
-const SetPassword = ({
+const Password = ({
   navigation,
-}: StackScreenProps<RootStackParameterList, 'SetPassword'>) => {
+  route,
+}: StackScreenProps<RootStackParameterList, 'Password'>) => {
   const [password, setPassword] = useState('');
-
+  const { flow } = route.params;
   const [email, setCount] = useSignupStore(
     (state) => [state.email, state.setCount],
     shallow,
@@ -21,21 +22,25 @@ const SetPassword = ({
     usePasswordValidation(password);
 
   const handleSubmit = () => {
-    setCount(4);
     Keyboard.dismiss();
-    navigation.navigate('Phone', {
-      flow: 'signup',
-    });
+    if (flow === 'signup') {
+      setCount(4);
+      navigation.navigate('Phone', {
+        flow,
+      });
+    } else {
+      navigation.navigate('Dummy');
+    }
   };
   return (
     <AuthLayout
-      title="Set a password"
+      title={flow === 'signup' ? 'Set a password' : 'Reset password'}
       description="To access your account linked to"
       subDescription={email}
       label="Confirm"
       onPress={handleSubmit}
       disabled={disabled}
-      isSignupBar
+      isSignupBar={flow === 'signup'}
     >
       <TextInput
         label="Enter password"
@@ -55,4 +60,4 @@ const SetPassword = ({
   );
 };
 
-export default SetPassword;
+export default Password;

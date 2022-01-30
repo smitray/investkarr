@@ -8,7 +8,6 @@ import {
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 import Text from './text';
-import ResendOTP from './resend-otp';
 
 type OTPViewProperties = {
   cellCount: 4 | 6;
@@ -81,7 +80,6 @@ const OTPView = ({ cellCount, setValue, value }: OTPViewProperties) => {
         }}
         renderCell={renderCell}
       />
-      {cellCount === 6 && <ResendOTP />}
     </>
   );
 };

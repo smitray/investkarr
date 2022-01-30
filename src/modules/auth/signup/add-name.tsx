@@ -30,7 +30,9 @@ const AddName = ({
   const onSubmit = () => {
     setCount(3);
     Keyboard.dismiss();
-    navigation.navigate('SetPassword');
+    navigation.navigate('Password', {
+      flow: 'signup',
+    });
   };
 
   return (

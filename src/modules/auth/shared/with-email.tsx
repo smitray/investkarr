@@ -55,12 +55,12 @@ const WithEmail = ({
           description={
             flow === 'signup'
               ? 'Choose the email you would like to use to \n log in to your account'
-              : 'this helps to show that this account realy \n belongs to you'
+              : 'This helps to show that this account realy \n belongs to you'
           }
           label="Send OTP"
           onPress={handleSubmit}
           disabled={!(isValid && dirty)}
-          isSignupBar
+          isSignupBar={flow === 'signup'}
         >
           <TextInput
             label="Enter email"

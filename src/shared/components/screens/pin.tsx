@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { OTPInput } from '@ui';
+import { OTPInput, RecoveryLink } from '@ui';
 import AuthLayout from '../auth-layout';
 import PinValidation from '../hooks/pin-validation';
 import { useSignupStore } from '@store';
@@ -11,9 +11,16 @@ export type PinProperties = {
 
 type PinScreenProperties = PinProperties & {
   onPress: () => void;
+  flow: 'login' | 'signup';
+  forgotPin?: () => void;
 };
 
-const Pin = ({ type, onPress }: PinScreenProperties) => {
+const Pin = ({
+  type,
+  onPress,
+  flow,
+  forgotPin = () => {},
+}: PinScreenProperties) => {
   const [value, setValue] = useState('');
   const [pin, setPin] = useSignupStore(
     (state) => [state.pin, state.setPin],
@@ -28,7 +35,6 @@ const Pin = ({ type, onPress }: PinScreenProperties) => {
   const handleSubmit = () => {
     if (type === 'set') {
       setPin(value);
-      setValue('');
     } else if (type === 'confirm') {
       // TODO: set pin in server
       console.log(value);
@@ -36,6 +42,7 @@ const Pin = ({ type, onPress }: PinScreenProperties) => {
       // TODO: verify pin in server
       console.log(value);
     }
+    setValue('');
     onPress();
   };
   return (
@@ -43,9 +50,11 @@ const Pin = ({ type, onPress }: PinScreenProperties) => {
       title={
         type === 'pin'
           ? 'Enter App Pin'
-          : type === 'set'
+          : type === 'confirm'
+          ? 'Confirm App Pin'
+          : type === 'set' && flow === 'signup'
           ? 'Set App Pin'
-          : 'Confirm App Pin'
+          : 'Reset App Pin'
       }
       label="Confirm"
       onPress={handleSubmit}
@@ -53,6 +62,9 @@ const Pin = ({ type, onPress }: PinScreenProperties) => {
       disabled={disabled}
     >
       <OTPInput cellCount={4} setValue={setValue} value={value} />
+      {type === 'pin' && (
+        <RecoveryLink title="Forgot pin" center onPress={forgotPin} />
+      )}
     </AuthLayout>
   );
 };

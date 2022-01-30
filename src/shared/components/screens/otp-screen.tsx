@@ -2,6 +2,7 @@ import { useSignupStore } from '@store';
 import { OTPInput } from '@ui';
 import React, { useState } from 'react';
 import shallow from 'zustand/shallow';
+import { Children } from '@tp/global';
 import AuthLayout from '../auth-layout';
 import otpValidation from '../hooks/otp-validation';
 
@@ -12,9 +13,15 @@ export type OTPProperties = {
 
 type OTPScreenProperties = OTPProperties & {
   onPress: () => void;
+  children: Children;
 };
 
-const OTPScreen = ({ type, onPress, flow = 'login' }: OTPScreenProperties) => {
+const OTPScreen = ({
+  type,
+  onPress,
+  flow = 'login',
+  children,
+}: OTPScreenProperties) => {
   const [email, phone, setCount, setCounter] = useSignupStore(
     (state) => [state.email, state.phone, state.setCount, state.setCounter],
     shallow,
@@ -41,6 +48,7 @@ const OTPScreen = ({ type, onPress, flow = 'login' }: OTPScreenProperties) => {
       disabled={disabled}
     >
       <OTPInput cellCount={6} setValue={setValue} value={value} />
+      {children}
     </AuthLayout>
   );
 };

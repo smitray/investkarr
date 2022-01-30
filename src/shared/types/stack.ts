@@ -1,23 +1,25 @@
 import { PinProperties, OTPProperties } from '@components';
 
-type PinScreenParameters = PinProperties & {
+type FlowProperties = {
   flow: 'signup' | 'login';
 };
+
+type PinScreenParameters = PinProperties & FlowProperties;
 
 export type RootStackParameterList = {
   OnBoarding: undefined;
   LoginLanding: undefined;
   SignupLanding: undefined;
-  WihEmail: {
-    flow: 'signup' | 'login';
-  };
+  WihEmail: FlowProperties;
   AddName: undefined;
-  SetPassword: undefined;
-  Phone: {
-    flow: 'signup' | 'login';
+  Password: FlowProperties;
+  Phone: FlowProperties;
+  PAN: FlowProperties & {
+    type?: 'email' | 'phone';
   };
-  AddPAN: undefined;
-  AddDOB: undefined;
+  DOB: FlowProperties & {
+    type?: 'email' | 'phone';
+  };
   SignupSuccess: undefined;
   OTPVerify: OTPProperties;
   Pin: PinScreenParameters;

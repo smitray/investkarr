@@ -1,4 +1,4 @@
-import { TextInput } from '@ui';
+import { TextInput, RecoveryLink } from '@ui';
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -75,6 +75,14 @@ const WithEmail = ({
               errors.password && touched.password && errors.password
             }
             isPassword={true}
+          />
+          <RecoveryLink
+            title="Forgot password"
+            onPress={() =>
+              navigation.navigate('WihEmail', {
+                flow: 'login',
+              })
+            }
           />
         </AuthLayout>
       )}

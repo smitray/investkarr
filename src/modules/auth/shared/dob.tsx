@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, ButtonInput, Text } from '@ui';
+import { Box, ButtonInput, Text, RecoveryLink } from '@ui';
 import { StackScreenProps } from '@react-navigation/stack';
 import { Keyboard } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
@@ -7,11 +7,13 @@ import { format } from 'date-fns';
 import { AuthLayout, dobValidation } from '@components';
 import { RootStackParameterList } from '@tp/stack';
 
-const AddDOB = ({
+const DOB = ({
   navigation,
-}: StackScreenProps<RootStackParameterList, 'AddDOB'>) => {
+  route,
+}: StackScreenProps<RootStackParameterList, 'DOB'>) => {
   const [show, setShow] = useState(false);
   const [date, setDate] = useState(new Date());
+  const { flow, type } = route.params;
 
   const { disabled, age } = dobValidation(date);
 
@@ -26,20 +28,37 @@ const AddDOB = ({
 
   const onSubmit = () => {
     Keyboard.dismiss();
-    navigation.navigate('Pin', {
-      type: 'set',
-      flow: 'signup',
+    if (flow === 'signup' || (flow === 'login' && type === 'phone')) {
+      navigation.navigate('Pin', {
+        type: 'set',
+        flow,
+      });
+    } else if (flow === 'login' && type === 'email') {
+      navigation.navigate('Password', {
+        flow,
+      });
+    }
+  };
+
+  const handleRecovery = () => {
+    navigation.navigate('PAN', {
+      flow,
+      type,
     });
   };
 
   return (
     <AuthLayout
-      title="Date of Birth"
-      description="As mentioned in your PAN card"
-      label="Create Account"
+      title={flow === 'signup' ? 'Date of Birth' : 'Account recovery'}
+      description={
+        flow === 'signup'
+          ? 'As mentioned in your PAN card'
+          : 'This helps to show that this account realy \n belongs to you'
+      }
+      label={flow === 'signup' ? 'Create Account' : 'Send reset request'}
       onPress={onSubmit}
       disabled={disabled}
-      isSignupBar
+      isSignupBar={flow === 'signup'}
     >
       <ButtonInput
         label="Date of birth"
@@ -60,8 +79,11 @@ const AddDOB = ({
           </Text>
         </Box>
       )}
+      {flow === 'login' && (
+        <RecoveryLink title="Use PAN number" onPress={handleRecovery} />
+      )}
     </AuthLayout>
   );
 };
 
-export default AddDOB;
+export default DOB;

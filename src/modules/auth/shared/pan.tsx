@@ -1,4 +1,4 @@
-import { TextInput } from '@ui';
+import { RecoveryLink, TextInput } from '@ui';
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -7,7 +7,6 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParameterList } from '@tp/stack';
 import { Keyboard } from 'react-native';
 import { useSignupStore } from '@store';
-// import { useSignupStore } from '@store';
 
 type FormValues = {
   pan: string;
@@ -23,14 +22,37 @@ const validationSchema = Yup.object().shape({
     .matches(/^[A-Z]{5}\d{4}[A-Z]$/, 'PAN is invalid'),
 });
 
-const VerifyPAN = ({
+const PAN = ({
   navigation,
-}: StackScreenProps<RootStackParameterList, 'AddPAN'>) => {
+  route,
+}: StackScreenProps<RootStackParameterList, 'PAN'>) => {
   const setCount = useSignupStore((state) => state.setCount);
+  const { flow, type } = route.params;
+
   const onSubmit = () => {
     Keyboard.dismiss();
-    setCount(6);
-    navigation.navigate('AddDOB');
+    if (flow === 'signup') {
+      setCount(6);
+      navigation.navigate('DOB', {
+        flow,
+      });
+    } else if (flow === 'login' && type === 'phone') {
+      navigation.navigate('Pin', {
+        type: 'set',
+        flow,
+      });
+    } else if (flow === 'login' && type === 'email') {
+      navigation.navigate('Password', {
+        flow,
+      });
+    }
+  };
+
+  const handleRecovery = () => {
+    navigation.navigate('DOB', {
+      flow,
+      type,
+    });
   };
 
   return (
@@ -46,12 +68,20 @@ const VerifyPAN = ({
         dirty,
       }) => (
         <AuthLayout
-          title="Let's verify your PAN card"
-          description="PAN is mandatory to invest in Inda"
-          label="Continue"
+          title={
+            flow === 'signup'
+              ? "Let's verify your PAN card"
+              : 'Account recovery'
+          }
+          description={
+            flow === 'signup'
+              ? 'PAN is mandatory to invest in Inda'
+              : 'This helps to show that this account realy \n belongs to you'
+          }
+          label={flow === 'signup' ? 'Continue' : 'Send reset request'}
           onPress={handleSubmit}
           disabled={!(isValid && dirty)}
-          isSignupBar
+          isSignupBar={flow === 'signup'}
         >
           <TextInput
             label="PAN number"
@@ -61,10 +91,13 @@ const VerifyPAN = ({
             autoCapitalize="characters"
             errorMessage={errors.pan && touched.pan && errors.pan}
           />
+          {flow === 'login' && (
+            <RecoveryLink title="Use Date of Birth" onPress={handleRecovery} />
+          )}
         </AuthLayout>
       )}
     </Formik>
   );
 };
 
-export default VerifyPAN;
+export default PAN;
