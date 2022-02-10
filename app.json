@@ -15,7 +15,10 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "Allow FaceID"
+      }
     },
     "android": {
       "adaptiveIcon": {

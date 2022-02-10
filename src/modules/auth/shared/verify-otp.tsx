@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ResendOTP } from '@ui';
 import { OTPScreen } from '@components';
 import { StackScreenProps } from '@react-navigation/stack';

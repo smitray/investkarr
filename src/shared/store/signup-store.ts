@@ -11,8 +11,6 @@ type SignupProperties = {
   setEmailVerified: () => void;
   pin: string;
   setPin: (newPin: string) => void;
-  counter: number;
-  setCounter: (newCounter: number) => void;
 };
 
 const signupStore = create<SignupProperties>((set) => ({
@@ -27,9 +25,6 @@ const signupStore = create<SignupProperties>((set) => ({
     set((state) => ({ emailVerified: !state.emailVerified })),
   pin: '',
   setPin: (newPin) => set((state) => ({ ...state, pin: newPin })),
-  counter: 59,
-  setCounter: (newCounter) =>
-    set((state) => ({ ...state, counter: newCounter })),
 }));
 
 export default signupStore;
